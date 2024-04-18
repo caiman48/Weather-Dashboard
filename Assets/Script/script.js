@@ -30,3 +30,34 @@ function fetchCityWeather(cityName) {
       })
       .catch(error => console.error('Error fetching city coordinates:', error));
 }
+// Function to fetch weather forecast from OpenWeatherMap
+function fetchWeather(lat, lon) {
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&cnt=40&appid=${API_KEY}`;
+
+  fetch(forecastUrl)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Failed to fetch weather data: ' + response.status);
+          }
+          return response.json();
+      })
+      .then(data => {
+          displayWeather(data);
+          displayFiveDay(data);
+      })
+      .catch(error => {
+          console.error('Error fetching weather data:', error);
+          alert('Error fetching weather data: ' + error.message);
+      });
+}
+// Display current weather data
+function displayWeather(data) {
+  placeNameElement.textContent = data.city.name;
+  const currentDate = new Date(data.list[0].dt * 1000);
+  weatherDateElement.textContent = currentDate.toLocaleDateString();
+  currentIcon.src = `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png`;
+  currentIcon.style.display = 'block';
+  tempNowElement.textContent = `${data.list[0].main.temp} °F`;
+  windNowElement.textContent = `${data.list[0].wind.speed} mph`;
+  humidityNowElement.textContent = `${data.list[0].main.humidity} %`;
+}
