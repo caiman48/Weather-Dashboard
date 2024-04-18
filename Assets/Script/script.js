@@ -15,3 +15,18 @@ const humidityNowElement = document.getElementById('humidityNow');
 const forecastContainer = document.getElementById('forecastContainer');
 
 // Function to handle city searches
+function fetchCityWeather(cityName) {
+  const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
+
+  fetch(geocodeUrl)
+      .then(response => response.json())
+      .then(locations => {
+          if (locations && locations.length > 0) {
+              const { lat, lon } = locations[0];
+              fetchWeather(lat, lon);
+          } else {
+              alert('City not found. Please try another search.');
+          }
+      })
+      .catch(error => console.error('Error fetching city coordinates:', error));
+}
