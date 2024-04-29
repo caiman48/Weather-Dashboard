@@ -80,29 +80,30 @@ function displayFiveDay(data) {
 }
 
 // Save search to local storage and display in search history
+function addSearchHistoryItem(cityName) {
+  const li = document.createElement("li");
+  li.textContent = cityName;
+  li.classList.add("history-item");
+  li.onclick = function() { fetchCityWeather(cityName); };
+  pastSearchesSection.appendChild(li);
+
+}
 function saveSearch(cityName) {
   let searches = JSON.parse(localStorage.getItem("searchHistory")) || [];
   if (!searches.includes(cityName)) {
     searches.push(cityName);
     localStorage.setItem("searchHistory", JSON.stringify(searches));
-    addSearchButton(cityName);
+    addSearchHistoryItem(cityName);
   }
 }
 
-// Add a button for new search history item
-function addSearchButton(cityName) {
-  const button = document.createElement("button");
-  button.textContent = cityName;
-  button.classList.add("history-btn");
-  button.onclick = () => fetchCityWeather(cityName);
-  pastSearchesSection.appendChild(button);
-}
 
 // Load search history from local storage
 function loadSearchHistory() {
+  pastSearchesSection.innerHTML = ''; // Clear the list before adding new items
   const searches = JSON.parse(localStorage.getItem("searchHistory")) || [];
   searches.forEach((cityName) => {
-    addSearchButton(cityName);
+    addSearchHistoryItem(cityName);
   });
 }
 
@@ -110,15 +111,16 @@ function loadSearchHistory() {
 findWeatherButton.addEventListener("click", () => {
   const cityName = locationInput.value.trim();
   if (cityName) {
+    saveSearch(cityName);  
     fetchCityWeather(cityName);
-    locationInput.value = ""; // Clear the input field after search
+    locationInput.value = ""; 
   } else {
     alert("Please enter a city name.");
   }
 });
 // Add event listener to handle clicks on history buttons
 pastSearchesSection.addEventListener("click", (event) => {
-  if (event.target.tagName === "BUTTON") {
+  if (event.target.tagName === "LI") {
     fetchCityWeather(event.target.textContent);
   }
 });
