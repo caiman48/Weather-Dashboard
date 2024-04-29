@@ -1,0 +1,141 @@
+/* Reset some basic elements */
+body,
+h1,
+h2,
+time,
+p,
+button,
+input {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply a background to the whole page */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background: #e7eff6;
+  padding: 20px;
+  color: #333;
+}
+
+/* Style the header */
+.page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: #0a548b;
+}
+
+/* Main container styles */
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+/* Search panel styles */
+.search-panel {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #0a548b;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.search-btn:hover {
+  background: #09406a;
+}
+
+.search-history {
+  margin-top: 20px;
+}
+
+/* Weather info styles */
+.weather-info {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.weather-now,
+.forecast-panel {
+  margin-bottom: 20px;
+}
+
+.weather-now h2,
+.forecast-panel h2 {
+  margin-bottom: 10px;
+  color: #0a548b;
+}
+
+/* Style for the date and image */
+weatherDate {
+  display: block; /* makes the time element display as a block */
+  margin-bottom: 10px;
+}
+
+#currentIcon {
+  width: 100px;
+  height: auto;
+  display: block; /* This will show the image when it's populated */
+  margin-bottom: 10px;
+}
+
+/* Paragraphs for temperature, wind, and humidity */
+.weather-now p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Forecast grid */
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+.history-btn {
+  display: block;
+  padding: 5px;
+  margin-top: 10px; /* Space between buttons */
+  background-color: #0a548b; /* Button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
