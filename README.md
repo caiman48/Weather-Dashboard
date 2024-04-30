@@ -7,6 +7,7 @@ Harnessing the capabilities of server-side APIs, "My Travel Weather Guide" provi
 The "My Travel Weather Guide" is a single-page application that utilizes server-side APIs to fetch and display weather data for any given city. Built with the traveler in mind, it allows for planning ahead by providing current weather conditions and a 5-day forecast. The dashboard dynamically updates HTML and CSS content, ensuring up-to-date information is always at the user's fingertips. Thanks to local storage, users can revisit their search history for quick access to previously viewed cities' weather.
 
 ## Screenshot
+![screenshot](https://github.com/caiman48/Weather-Dashboard/assets/102683872/c2ee0ec7-a160-412e-b9f7-5a1b97a659e3)
 
 
 ## Installation
