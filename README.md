@@ -13,7 +13,7 @@ The "My Travel Weather Guide" is a single-page application that utilizes server-
 ## Installation
 
 Steps
-No installation necessary! Simply visit My Travel Weather Guide to start planning your trip with the latest weather information.
+No installation necessary! Simply visit [My Travel Weather Guide](https://caiman48.github.io/Weather-Dashboard/) to start planning your trip with the latest weather information.
 For offline use or development purposes, you can clone the repository from GitHub.
 Open the index.html file in a modern web browser to run the application locally.
 
